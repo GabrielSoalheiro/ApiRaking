@@ -1,7 +1,7 @@
 namespace RankingApi;
 
-public class Ranking
-{
+public record Ranking
+    {
     public string? Nome { get; set; }
 
     public int Id { get; set; }

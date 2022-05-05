@@ -18,11 +18,12 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer(connectionString));
 
 // Add services to the container.
 
@@ -31,15 +32,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(opt =>
-                opt.UseSqlServer("Data Source=SQLVIVIANE\\Biblioteca.db"));
+//builder.Services.AddDbContext<AppDbContext>(opt =>
+//                opt.UseSqlServer("Data Source=SQLVIVIANE\\Biblioteca.db"));
 
-var app = builder.Build();
+//var app = builder.Build();
 
 //builder.Services.AddDbContext<AppDbContext>(o => o.UseMySql(
-//             "server=localhost;port=3306;database=RankingDB;uid=root;",
+//             "server=localhost;port=3306;database=Academia;uid=root;",
 //            new MySqlServerVersion(new Version(8, 0, 11))));
 
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
