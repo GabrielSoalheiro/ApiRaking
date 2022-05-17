@@ -21,35 +21,80 @@ namespace RankingApi.Controllers
         {
             new Quiz
             {
-                NotaTotal= 10,
-                TempoTotal=new TimeSpan(1,60,0),
+                Id=1,
+                Nome="Gabriel Fernando",
+                NotaTotal= 9,
+                TempoTotal=new TimeSpan(70,70,70),
             },
             new Quiz
             {
+                Id=2,
+                Nome="Jorge Alves",
                 NotaTotal= 10,
-                TempoTotal=new TimeSpan(0,60,0),
+                TempoTotal=new TimeSpan(0,10,40),
             },
             new  Quiz
             {
-                NotaTotal= 10,
-                TempoTotal=new TimeSpan(0,20,0),
+                Id=3,
+                Nome="Jorge Alencar",
+                NotaTotal= 8,
+                TempoTotal=new TimeSpan(40,0,0),
             },
             new  Quiz
             {
-                NotaTotal= 10,
-                TempoTotal=new TimeSpan(0,0,50),
+                Id=4,
+                Nome="Pedro Jorge",
+                NotaTotal= 7,
+                TempoTotal=new TimeSpan(20,0,0),
             },
             new  Quiz
             {
-                NotaTotal= 10,
-                TempoTotal=new TimeSpan(0,20,0),
+                Id=5,
+                Nome="Lucas Jorge",
+                NotaTotal= 6,
+                TempoTotal=new TimeSpan(10,0,0),
             },
             new  Quiz
             {
-                Id=10000,
-                Nome="Fulano",
-                NotaTotal= 100,
-                TempoTotal=new TimeSpan(0,10,10),
+                Id=6,
+                Nome="Gabriel Jorge",
+                NotaTotal= 5,
+                TempoTotal=new TimeSpan(8,0,0),
+            },
+            new Quiz
+            {
+                Id=7,
+                Nome="Gabriel Soalheiro",
+                NotaTotal= 4,
+                TempoTotal=new TimeSpan(7,0,0),
+            },
+            new Quiz
+            {
+                Id=8,
+                Nome="Gel Só",
+                NotaTotal= 3,
+                TempoTotal=new TimeSpan(6,0,0),
+            },
+            new Quiz
+            {
+                Id=9,
+                Nome="Soalheiro Jorge",
+                NotaTotal= 2,
+                TempoTotal=new TimeSpan(5,0,0),
+            },
+            new Quiz
+            {
+                Id=10,
+                Nome="Gabriel Silva",
+                NotaTotal= 1,
+                TempoTotal=new TimeSpan(4,0,0),
+            },
+             new Quiz
+            {
+                Id=10,
+                Nome="Uai",
+                NotaTotal= 2,
+                TempoTotal=new TimeSpan(12,0,0),
             }
         };
         #endregion

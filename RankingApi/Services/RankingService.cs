@@ -9,98 +9,51 @@ namespace RankingApi.Services
     public class RankingService
     {
 
-         #region [Testes de Conquistas]
+        #region [Testes de Conquistas]
         Func<Quiz, Ranking>[] RankingList =
             new Func<Quiz, Ranking>[]
-
-             {
-           q=> q.TempoTotal.TotalDays > 60 ? new Ranking
+            {
+            q=> (q.TempoTotal.TotalDays > 0 && q.TempoTotal.TotalHours >-1 && q.TempoTotal.TotalSeconds >-1 && q.TempoTotal.TotalMinutes >-1 && q.TempoTotal.TotalMilliseconds >-1) ? new Ranking
            {
-                Nota = q.NotaTotal * 1,
-                Nome= q.Nome
-                
+               Nota = q.NotaTotal*10,
+               Nome = q.Nome,
+               Id= q.Id
            } : null,
-
-           q=> q.TempoTotal.TotalDays > 30 ? new Ranking
+           q=> (q.TempoTotal.TotalDays <= 0  && q.TempoTotal.TotalHours > 0 && q.TempoTotal.TotalHours < 10 &&q.TempoTotal.TotalSeconds >-1 && q.TempoTotal.TotalMinutes >-1 && q.TempoTotal.TotalMilliseconds >-1) ? new Ranking
            {
-               Nota = q.NotaTotal * 5,
-                Nome= q.Nome
+               Nota = q.NotaTotal*30,
+               Nome = q.Nome,
+               Id= q.Id
            } : null,
-
-           q=> q.TempoTotal.TotalDays > 10 ? new Ranking
+           q=> (q.TempoTotal.TotalDays <= 0  && q.TempoTotal.TotalHours > 9 && q.TempoTotal.TotalSeconds >-1 && q.TempoTotal.TotalMinutes >-1 && q.TempoTotal.TotalMilliseconds >-1) ? new Ranking
            {
-               Nota = q.NotaTotal * 10,
-                Nome= q.Nome
+               Nota = q.NotaTotal*20,
+               Nome = q.Nome,
+               Id= q.Id
            } : null,
-
-           q=> q.TempoTotal.TotalDays > 5 ? new Ranking
+            q=> (q.TempoTotal.TotalDays <= 0  && q.TempoTotal.TotalHours <= 0 && q.TempoTotal.TotalSeconds >-1 && q.TempoTotal.TotalMinutes > 0 && q.TempoTotal.TotalMinutes < 30 && q.TempoTotal.TotalMilliseconds >-1) ? new Ranking
            {
-               Nota = q.NotaTotal * 20,
-                Nome= q.Nome
+               Nota = q.NotaTotal*50,
+               Nome = q.Nome,
+               Id= q.Id
            } : null,
-
-           q=> q.TempoTotal.TotalDays > 0 ? new Ranking
+           q=> (q.TempoTotal.TotalDays <= 0  && q.TempoTotal.TotalHours <= 0 && q.TempoTotal.TotalSeconds >-1 && q.TempoTotal.TotalMinutes > 29 && q.TempoTotal.TotalMilliseconds >-1) ? new Ranking
            {
-               Nota = q.NotaTotal * 30
+               Nota = q.NotaTotal*60,
+               Nome = q.Nome,
+               Id= q.Id
            } : null,
-
-           q=> q.TempoTotal.TotalHours > 20 ? new Ranking
+           q=> (q.TempoTotal.TotalDays <= 0  && q.TempoTotal.TotalHours <= 0 && q.TempoTotal.TotalSeconds >0 && q.TempoTotal.TotalMinutes <=0 && q.TempoTotal.TotalMilliseconds >-1) ? new Ranking
            {
-               Nota = q.NotaTotal * 50
+               Nota = q.NotaTotal*70,
+               Nome = q.Nome,
+               Id= q.Id
            } : null,
-
-           q=> q.TempoTotal.TotalHours > 10 ? new Ranking
+           q=> (q.TempoTotal.TotalDays <= 0  && q.TempoTotal.TotalHours <= 0 && q.TempoTotal.TotalSeconds <=0 && q.TempoTotal.TotalMinutes <=0 && q.TempoTotal.TotalMilliseconds >-1) ? new Ranking
            {
-               Nota = q.NotaTotal * 60
-           } : null,
-
-           q=> q.TempoTotal.TotalHours > 5 ? new Ranking
-           {
-               Nota = q.NotaTotal * 70
-           } : null,
-
-           q=> q.TempoTotal.TotalHours > 4 ? new Ranking
-           {
-               Nota = q.NotaTotal * 80
-           } : null,
-           q=> q.TempoTotal.TotalHours > 3 ? new Ranking
-           {
-               Nota = q.NotaTotal * 85
-           } : null,
-           q=> q.TempoTotal.TotalHours > 2 ? new Ranking
-           {
-               Nota = q.NotaTotal * 90
-           } : null,
-           q=> q.TempoTotal.TotalHours > 1? new Ranking
-           {
-               Nota = q.NotaTotal * 95
-           } : null,
-           q=> q.TempoTotal.TotalHours > 0? new Ranking
-           {
-               Nota = q.NotaTotal * 100
-           } : null,
-           q=> q.TempoTotal.TotalMinutes > 40? new Ranking
-           {
-               Nota = q.NotaTotal * 105
-           } : null,
-           q=> q.TempoTotal.TotalMinutes > 30? new Ranking
-           {
-               Nota = q.NotaTotal * 110
-           } : null,
-           q=> q.TempoTotal.TotalMinutes > 20? new Ranking
-           {
-               Nota = q.NotaTotal * 120,
-                Nome= q.Nome
-           } : null,
-           q=> q.TempoTotal.TotalMinutes > 10? new Ranking
-           {
-               Nota = q.NotaTotal * 130,
-                Nome= q.Nome
-           } : null,
-           q=> q.TempoTotal.TotalMinutes > 0? new Ranking
-           {
-               Nota = q.NotaTotal * 135,
-                Nome= q.Nome
+               Nota = q.NotaTotal,
+               Nome = q.Nome,
+               Id= q.Id
            } : null,
 
         };
@@ -116,7 +69,7 @@ namespace RankingApi.Services
                     .Where(o => o != null));
 
 
-            return Results.OrderByDescending(o=> o.Nota).Take(10).ToList();
+            return Results.OrderByDescending(o => o.Nota).Take(10).ToList();
         }
 
     }
